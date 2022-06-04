@@ -23,7 +23,7 @@ namespace ApiAuth.Controllers
 
             if (user is null)
             {
-                return NotFound(new { message = "Incorect user or password" });
+                return NotFound(new { message = "Incorrect user or password" });
             }
 
             var token = TokenService.GenerateToken(user);
@@ -46,7 +46,7 @@ namespace ApiAuth.Controllers
 
             if (user is null)
             {
-                return NotFound(new { message = "Incorect user or password" });
+                return NotFound(new { message = "Incorrect user or password" });
             }
 
             var token = TokenService.GenerateToken(user);

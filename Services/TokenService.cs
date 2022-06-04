@@ -15,7 +15,7 @@ namespace ApiAuth.Services
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Expires = DateTime.UtcNow.AddHours(8),
+                Expires = DateTime.UtcNow.AddMinutes(8),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature
@@ -36,7 +36,7 @@ namespace ApiAuth.Services
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Expires = DateTime.UtcNow.AddHours(8),
+                Expires = DateTime.UtcNow.AddMinutes(3),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature
@@ -86,7 +86,7 @@ namespace ApiAuth.Services
             return principal;
         }
 
-        private static List<(string, string)> _refreshTokens = new();
+        private static readonly List<(string, string)> _refreshTokens = new();
 
         public static void AddRefreshToken(string username, string refreshToken)
         {
